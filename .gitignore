@@ -8,6 +8,8 @@
 *.[iI][mM][gG]
 *.[cC][hH][dD]
 *.[pP][bB][pP]
+*.[rR][oO][mM]
+*.[pP][sS][xX]
 *.[eE][xX][eE]
 
 # Downloaded third-party test suites; keep local until licensing is reviewed
@@ -21,6 +23,9 @@
 __pycache__/
 *.pyc
 *.docx
+/state.json
+/vram.ppm
+/vram_screenshot.ppm
 
 # Local credentials and editor state
 .env

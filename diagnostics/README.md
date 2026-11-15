@@ -1,5 +1,7 @@
 # Compatibility investigation — 2026-10-25
 
+> Historical investigation record. The results below were reported during that investigation; referenced logs and generated images are not checked in. They were not rerun for the 2026-11-15 documentation review. The current source includes XA decoding/mixing (`src/spu.rs`, connected through `src/bus.rs`), so the statement below that XA audio was unimplemented describes the earlier investigation state. The current automated test run passed 41 tests with 1 local-disc probe ignored; the 38-test count below is historical.
+
 ## Changes
 
 The executable is rebuilt at `target/release/psx_ai_emu.exe`.
@@ -24,7 +26,9 @@ Hardware references: [CD controller](https://psx-spx.consoledev.net/dev/ps1/cdr/
 - The supplied `psxtest_cpu.exe` ran for 100 million instructions, reached `Done`, and printed `Result: 00000101`. No reference result was established, so this is **not claimed as a passing CPU conformance test**. See `investigation/cpu_test.log`.
 - BIOS/game VSync timeout messages still occur. CPU instruction timing, CD command/sector scheduling, partial/in-flight MDEC input, and other hardware behaviors remain simplified. No claim of cycle accuracy or full-game compatibility is made.
 
-## Reproduce (PowerShell, from src_repo)
+## Reproduce (PowerShell, from the repository root)
+
+The probe hardcodes `SCPH1001.BIN` in the working directory. Supply that BIOS and the named game images locally. `GAME_CYCLES` counts interpreter instruction steps. The movie-frame counter is tied to an FFVII-specific program address and is not suitable for arbitrary disc revisions. Output folders and logs referenced here are local artifacts, not repository links.
 
 ```powershell
 cargo test --release

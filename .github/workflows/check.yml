@@ -1,0 +1,20 @@
+name: Rust checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install stable Rust
+        run: rustup toolchain install stable --profile minimal
+      - name: Build
+        run: cargo +stable build --release --locked
+      - name: Test without local BIOS or discs
+        run: cargo +stable test --release --locked
