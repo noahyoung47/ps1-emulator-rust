@@ -1,0 +1,34 @@
+# Rust build output
+/target/
+
+# Local BIOS, disc images, and executable test binaries
+*.[bB][iI][nN]
+*.[iI][sS][oO]
+*.[cC][uU][eE]
+*.[iI][mM][gG]
+*.[cC][hH][dD]
+*.[pP][bB][pP]
+*.[eE][xX][eE]
+
+# Downloaded third-party test suites; keep local until licensing is reviewed
+/Test Rom/
+
+# Generated diagnostics and local documents
+/diagnostics/*/
+*.bin.*
+*.zip
+*.log
+__pycache__/
+*.pyc
+*.docx
+
+# Local credentials and editor state
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+/.vscode/
+/.idea/
+Thumbs.db
+Desktop.ini
