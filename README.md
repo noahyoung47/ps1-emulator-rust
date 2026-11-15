@@ -2,7 +2,7 @@
 
 A work-in-progress PlayStation 1 emulator with a desktop interface and a headless diagnostic mode. It implements CPU execution, software graphics rendering, disc access, video decoding, audio synthesis, and controller protocols in Rust.
 
-Compatibility and hardware timing are incomplete. The project is not cycle accurate, and the results below do not establish full-game playability.
+Compatibility and hardware timing are incomplete. The project is not cycle accurate.
 
 ## Gameplay capture
 
@@ -18,7 +18,7 @@ Compatibility and hardware timing are incomplete. The project is not cycle accur
 
 [Download the accompanying Crash Bandicoot recording (MP4, approximately 46 MB)](docs/media/crash-bandicoot-recording.mp4).
 
-These captures document local sessions. Source revisions, host hardware, BIOS revisions, and full settings were not recorded with the files, so they do not establish reproducibility against the current checkout or full-game compatibility.
+These captures document local sessions. Source revisions, host hardware, BIOS revisions, and full settings were not recorded with the files, so they do not establish reproducibility against the current checkout.
 
 Earlier full-VRAM diagnostic captures remain available: [BIOS boot](bios_boot_v2.png) and [Ridge Racer loading](ridge_boot.png). Those images include textures and off-screen buffers; they are not active-display gameplay screenshots.
 
@@ -33,7 +33,7 @@ Earlier full-VRAM diagnostic captures remain available: [BIOS boot](bios_boot_v2
 - Desktop game loading, pause/frame step, five in-memory save-state slots, display filters, and CPU/GTE, VRAM, audio, and memory inspection tools.
 - Headless runs with instruction limits, instruction tracing, CPU-state JSON, and VRAM PPM export.
 
-These are implemented code paths, not claims of complete hardware fidelity. The sole direct Cargo dependency is `minifb`; see [Cargo.toml](Cargo.toml).
+The sole direct Cargo dependency is `minifb`; see [Cargo.toml](Cargo.toml).
 
 ## Build and run
 
@@ -74,7 +74,7 @@ Save states are stored in memory and disappear when the application closes. Memo
 
 ## Compatibility observations
 
-The Gran Turismo 2 row and the Crash title-screen observation describe maintainer-supplied media added during this review. The other game results below are **historical reports** from [the 2026-10-25 investigation](diagnostics/README.md). The cited logs and later gameplay captures are local artifacts absent from this repository. The historical runs have not been reproduced during this documentation review; BIOS/disc files were unavailable. Game revisions, image hashes, and capture settings were not fully recorded.
+The observations below document specific milestones, not full-game playability or complete hardware fidelity. The Gran Turismo 2 row and the Crash title-screen observation describe maintainer-supplied media added during this review. The other game results below are **historical reports** from [the 2026-10-25 investigation](diagnostics/README.md). The cited logs and later gameplay captures are local artifacts absent from this repository. The historical runs have not been reproduced during this documentation review; BIOS/disc files were unavailable. Game revisions, image hashes, and capture settings were not fully recorded.
 
 | Title | Reported observation | Scope and remaining uncertainty |
 | --- | --- | --- |
@@ -121,9 +121,9 @@ The probe sends scripted Start/confirm input and exports CPU state, RAM, full VR
 
 The original command-line emulator core was created by multiple background Gemini agents, using a shared Google Drive workspace to coordinate research and source code. The source was then moved into the Antigravity IDE for compilation, testing, and further feature development.
 
-The maintainer directed the shared workspace setup, guided testing in Antigravity, and described visual and audio problems that were difficult to diagnose from code or logs alone. They also identified features and changes to improve usability and emulator capabilities, and validated updates throughout development.
+The maintainer guided the project through successive iterations: directing the shared workspace setup, identifying features and changes to improve usability and emulator capabilities, guiding testing in Antigravity, and validating updates throughout development. Hands-on testing included describing visual and audio problems that were difficult to diagnose from code or logs alone, providing feedback to guide further changes.
 
-AI-generated code is part of the implementation. This workflow combined agent-generated research and code with maintainer direction, hands-on observation, and iterative validation. It does not establish complete hardware accuracy or game compatibility. The repository's regression tests and local-disc diagnostic harness provide checks for specific behaviors; the results and their limits are documented above.
+This workflow combined agent-generated research and implementation code with maintainer direction, hands-on testing, and iterative validation. The repository's regression tests and local-disc diagnostic harness provide checks for specific behaviors; the results and their limits are documented above.
 
 ## Known limitations
 
@@ -132,7 +132,7 @@ AI-generated code is part of the implementation. This workflow combined agent-ge
 - Audio decoding and mixing exist in the current source, but accuracy, synchronization, and host playback across games are not established by unit tests.
 - Memory cards and disk-persistent save states are absent. Do not rely on this emulator for preserving game progress.
 - Disc layout support, platform coverage, and real-time performance need broader validation.
-- Gameplay and historical diagnostic captures have no recorded source revisions; future captures should include the commit, BIOS/disc revision, host hardware, and settings.
+- Future gameplay and diagnostic captures should include the commit, BIOS/disc revision, host hardware, and settings.
 
 ## Source guide
 
